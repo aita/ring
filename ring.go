@@ -256,7 +256,7 @@ var readerPool = sync.Pool{
 
 func ping(nc net.Conn) error {
 	n, err := io.WriteString(nc, versionCommand)
-	if n < len(versionCommand) && err != nil {
+	if n < len(versionCommand) && err == nil {
 		err = io.ErrShortWrite
 	}
 	if err != nil {
